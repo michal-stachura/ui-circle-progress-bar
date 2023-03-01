@@ -9,7 +9,12 @@
       type: Number,
       default: 1000,
     },
-    decimalPlaces: {
+    animationDelay: {
+      required: false,
+      type: Number,
+      default: 0,
+    },
+    decimalPrecision: {
       required: false,
       type: Number,
       default: 0,
@@ -82,10 +87,12 @@
   })
 
   const progress = ref<number>(props.progress);
-  const circumference = props.progressRadius * 2 * Math.PI
+  const circumference:number = props.progressRadius * 2 * Math.PI
 
   watch(() => props.progress, (newValue, _) => {
-    smoothProgressChange(newValue)
+    setTimeout(() => {
+      smoothProgressChange(newValue)
+    }, props.animationDelay)
   })
 
   function smoothProgressChange(target: number): void  {
@@ -143,7 +150,7 @@
       <span
         :class="`absolute ${props.textLayout}`"
       >
-        {{ progress.toFixed(props.decimalPlaces) }} %
+        {{ progress.toFixed(props.decimalPrecision) }} %
       </span>
     </div>
   </div>

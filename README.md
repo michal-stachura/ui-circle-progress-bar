@@ -1,7 +1,14 @@
 # Animated Circle Progress Bar
 
-[Live demo](https://vite-tailwind-medium-comments.netlify.app/)
-<img width="1344" alt="image" src="https://user-images.githubusercontent.com/56992010/166817375-9304124e-c396-4e7e-b97b-86436044e1da.png">
+[Live demo and example usage](https://ui.santri.pl/circle-progress-bar/)
+<img width="1344" alt="image" src="https://assets.santri.pl/images/circle-progress-bar2.png">
+
+## Features
+- Animatet progress bar
+- Customizable animation duration and delay
+- Customizable decimal precision
+- Fully customizable progress bar layoyt
+- Can be used with TailwindCSS classes
 
 ## Install
 
@@ -30,4 +37,3 @@ yarn dev
 # npm
 npm run dev
 ```
-

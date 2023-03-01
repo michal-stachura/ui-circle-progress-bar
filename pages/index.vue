@@ -1,102 +1,70 @@
 <script setup lang="ts">
   const progress = ref<number>(0);
-
-  setTimeout(function() {
-    progress.value = 88;
-  }, 300)
-
+  const customProgress = ref<string>('0');
 </script>
 
 <template>
   <div class="text-center">
     <h1 class="text-4xl my-8 font-semibold">Animated Circle Progress Bars</h1>
     <hr class="bg-gray-200 mb-8" />
-    <p>Fully customizable Circle progress bar with animated </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      <div class="col-span-4">
-        <RoundedProgressBar
-          :progress="progress"
-        />
-      </div>
+    <p>Fully customizable <strong>Circle Progress Bar</strong> with animated data</p>
+    <div class="grid grid-cols-1">
       <div>
-        <RoundedProgressBar
+        <CircleProgressBar
           :progress="progress"
-          :animation-duration="2000"
         />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :animation-duration="500"
-          :decimal-places="2"
-          :text-layout="'text-sm'"
+        <button
+          :class="{'bg-gray-200': progress === 0, 'bg-gray-50': progress !== 0}"
+          @click="progress = 0"
+        >
+          0%
+        </button>
+        <button
+          :class="{'bg-gray-200': progress === 25, 'bg-gray-50': progress !== 25}"
+          @click="progress = 25"
+        >
+          25%
+        </button>
+        <button
+          :class="{'bg-gray-200': progress === 33, 'bg-gray-50': progress !== 33}"
+          @click="progress = 33"
+        >
+          33%
+        </button>
+        <button
+          :class="{'bg-gray-200': progress === 88, 'bg-gray-50': progress !== 88}"
+          @click="progress = 88"
+        >
+          88%
+        </button>
+        <button
+          :class="{'bg-gray-200': progress === 100, 'bg-gray-50': progress !== 100}"
+          @click="progress = 100"
+        >
+          100%
+        </button>
+        <hr class="w-96 mx-auto my-8">
+        <input
+        v-model="customProgress" 
         />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :animation-duration="800"
-          :text-layout="'text-sm'"
-          :radius="40"
-          :progress-radius="25"
-        />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :text-layout="'text-xl'"
-          :thickness="8"
-          :progress-thickness="8"
-        />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :text-layout="'text-4xl font-bold text-red-800'"
-          :container-width="'w-40'"
-          :container-height="'h-40'"
-          :radius="70"
-          :progress-radius="70"
-          :thickness="10"
-          :progress-thickness="15"
-          :cx="80"
-          :cy="80"
-          :progress-cx="80"
-          :progress-cy="80"
-        />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :text-layout="'text-4xl font-bold text-red-800'"
-          :container-width="'w-40'"
-          :container-height="'h-40'"
-          :radius="70"
-          :progress-radius="70"
-          :thickness="10"
-          :progress-thickness="4"
-          :cx="80"
-          :cy="80"
-          :progress-cx="80"
-          :progress-cy="80"
-        />
-      </div>
-      <div>
-        <RoundedProgressBar
-          :progress="progress"
-          :text-layout="'text-4xl font-bold text-white drop-shadow-lg'"
-          :container-width="'w-40'"
-          :container-height="'h-40'"
-          :radius="70"
-          :progress-radius="70"
-          :thickness="0"
-          :progress-thickness="140"
-          :cx="80"
-          :cy="80"
-          :progress-cx="80"
-          :progress-cy="80"
-        />
+        <button
+          :class="{'bg-gray-200': progress === 100, 'bg-gray-50': progress !== 100}"
+          @click="progress = parseFloat(customProgress)"
+          >
+          Set your own
+        </button>
+        <hr class="w-96 mx-auto my-8">
+        <p>For more information about configuration and examples see our <NuxtLink class="text-blue-800" to="https://ui.santri.pl/circle-progress-bar/">Demo Page</NuxtLink></p>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  button, input {
+    @apply shadow rounded px-5 py-2 mx-2 hover:bg-gray-200 transition-all duration-300
+  }
+  input {
+    @apply w-16
+  }
+</style>
